@@ -1,0 +1,956 @@
+{
+	"info": {
+		"_postman_id": "ea8000b8-65cc-49b5-bbf1-c93d47f6fd6e",
+		"name": "Canvara",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "organisation",
+			"item": [
+				{
+					"name": "create-organization",
+					"item": [
+						{
+							"name": "WithMendateFields",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"active\": true,\r\n    \"name\": \"mock org 27\",\r\n    \"address\": [\r\n        {\r\n            \"city\": \"lucknow\",\r\n            \"state\": \"up\",\r\n            \"postal_code\": 208020,\r\n            \"country\": \"India\",\r\n            \"type\": \"postal\",\r\n            \"use\": \"work\"\r\n        }\r\n    ],\r\n    \"type\": [\r\n        \"ins\"\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/organization/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"organization",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "WithAllFields",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"active\": false,\r\n    \"name\": \"mock org 29\",\r\n    \"alias\":[\"mock a \",\"mock b\"],\r\n    \"telecom\":{\r\n        \"email\":\"abc_org@gmail.com\",\r\n        \"phone_number\":9044981270\r\n    },\r\n    \"address\": {\r\n        \"city\": \"lucknow\",\r\n        \"state\": \"up\",\r\n        \"postal_code\":208021,\r\n        \"country\":\"India\"\r\n    },\r\n    \"type\": \"ip\",\r\n    \"partOf\":[\"tcs\",\"hcl\"],\r\n    \"contact\":{\r\n        \"purpose\":\"finance\",\r\n        \"name\":\"hr - varun\",\r\n        \"telecom\":{\r\n        \"email\":\"varun@gmail.com\",\r\n        \"phone_number\":9838825117\r\n    },\r\n        \"address\": {\r\n        \"city\": \"lucknow\",\r\n        \"state\": \"up\",\r\n        \"postal_code\":208020,\r\n        \"country\":\"India\"\r\n    }\r\n    },\r\n    \"endpoint\":[\"getsome.com\",\"register.com\"]\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/organization/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"organization",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "WithAllFields Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"resourceType\":\"Organization\",\r\n    \"name\": \"Apollo-12\",\r\n    \"active\": true,\r\n    \"type\": [\r\n        \"ins\",\r\n        \"team\"\r\n    ],\r\n    \"alias\": [\r\n        \"Tata medical\",\r\n        \"Medanta\"\r\n    ],\r\n    \"telecom\": [\r\n        {\r\n            \"system\": \"fax\",\r\n            \"value\": \"mock-value\",\r\n            \"use\": \"mobile\",\r\n            \"rank\": 1,\r\n            \"period\":{\"startTime\":\"\",\"endTime\":\"\"}\r\n        },\r\n        {\r\n            \"system\": \"fax\",\r\n            \"value\": \"mock-value\",\r\n            \"use\": \"old\",\r\n            \"rank\": 0\r\n        }\r\n    ],\r\n    \"address\": [\r\n        {\r\n            \"use\": \"work\",\r\n            \"type\": \"postal\",\r\n            \"text\": \"mock-text\",\r\n            \"line\": \"mock-line\",\r\n            \"city\": \"lucknow\",\r\n            \"district\": \"kanpur nagar\",\r\n            \"country\": \"India\",\r\n            \"postalcode\": \"208020\",\r\n            \"state\": \"up\",\r\n            \"period\" : {\"startTime\":\"\",\"endTime\":\"\"}\r\n        },\r\n        {\r\n            \"use\": \"billing\",\r\n            \"type\": \"physical\",\r\n            \"text\": \"mock-text\",\r\n            \"line\": \"mock-line\",\r\n            \"city\": \"kanpur\",\r\n            \"country\": \"India\",\r\n            \"postalcode\": \"208020\",\r\n            \"state\": \"up\"\r\n        }\r\n    ],\r\n    \"partOf\": {\r\n        \"reference\": \"mock-reference\",\r\n        \"type\": \"mock-url\",\r\n        \"id\": \"MOCK-ID\",\r\n        \"display\": \"mock-display\"\r\n    },\r\n    \"contact\": [\r\n        {\r\n            \"purpose\": \"bill\",\r\n            \"name\": {\r\n                \"use\": \"usual\",\r\n                \"text\": \"mock-text\",\r\n                \"family\":\"mock-family\",\r\n                \"given\":\"mock-given\",\r\n                \"prefix\":\"mock-prefix\",\r\n                \"suffix\":\"mock-suffix\",\r\n                \"period\":{\"startTime\":\"\",\"endTime\":\"\"}\r\n            },\r\n            \"telecom\": [\r\n                {\r\n                    \"system\": \"phone\",\r\n                    \"value\": \"mock-value\",\r\n                    \"use\": \"home\",\r\n                    \"rank\": 0\r\n                }\r\n            ],\r\n            \"address\": {\r\n                \"use\": \"home\",\r\n                \"type\": \"postal\",\r\n                \"text\": \"mock-text\",\r\n                \"line\": \"mock-line\",\r\n                \"city\": \"kanpur\",\r\n                \"country\": \"India\"\r\n            }\r\n        },\r\n        {\r\n            \"purpose\": \"bill\",\r\n            \"name\": {\r\n                \"use\": \"usual\",\r\n                \"text\": \"mock-text\"\r\n            },\r\n            \"telecom\": [\r\n                {\r\n                    \"system\": \"phone\",\r\n                    \"value\": \"mock-value\",\r\n                    \"use\": \"home\",\r\n                    \"rank\": 0\r\n                }\r\n            ],\r\n            \"address\": {\r\n                \"use\": \"home\",\r\n                \"type\": \"postal\",\r\n                \"text\": \"mock-text\",\r\n                \"line\": \"mock-line\",\r\n                \"city\": \"kanpur\",\r\n                \"country\": \"India\"\r\n            }\r\n        }\r\n    ],\r\n    \"endpoint\": [\r\n        {\r\n            \"reference\": \"mock-reference\",\r\n            \"type\": \"www.some.com\",\r\n            \"id\": \"\",\r\n            \"display\": \"mock-display\"\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}:8080/organization/",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "8080",
+									"path": [
+										"organization",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "read-organization",
+					"item": [
+						{
+							"name": "withOnlyOrgId",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\":\"62235d57511e7a4533351749\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/organization/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"organization",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "update-organization",
+					"item": [
+						{
+							"name": "update-org-active",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"_identifier\": \"6211f4a570694760ed6e11f0\",\r\n    \"active\": false,\r\n     \"type\": [\r\n        \"ins\"\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}:8080/organization/",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "8080",
+									"path": [
+										"organization",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update-org-type",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"id\": \"622366fef118b711beb91a51\",\r\n     \"type\": [\r\n        \"govt\"\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}:8080/organization/",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "8080",
+									"path": [
+										"organization",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "update-org-type",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "\"prov\",\"dept\",\"team\",\"govt\",\"ins\",\"pay\",\"edu\",\"reli\",\"crs\",\"cg\",\"bus\",\"other\""
+										},
+										"url": {
+											"raw": "http://{{host}}:8080/organization/",
+											"protocol": "http",
+											"host": [
+												"{{host}}"
+											],
+											"port": "8080",
+											"path": [
+												"organization",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": "",
+									"header": [
+										{}
+									],
+									"cookie": [
+										{
+											"expires": "Invalid Date"
+										}
+									],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "delete-organization",
+					"item": [
+						{
+							"name": "DeleteById",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\":\"622366fef118b711beb91a51\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/organization/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"organization",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "search-organization",
+					"item": [
+						{
+							"name": "searchByCriteriaQuery",
+							"item": [
+								{
+									"name": "withOnlyOrgType",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"type\": [\r\n        \"ins\",\r\n        \"team\"\r\n        \r\n    ],\r\n    \"_count\":2,\r\n    \"_pageNo\":0\r\n    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/organization/byQuery",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"organization",
+												"byQuery"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "withOnlyOrgActive",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n   \"active\": false,\r\n    \"_count\":10,\r\n    \"_pageNo\":0,\r\n    \"_sort\":\"lastUpdated\"\r\n    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/organization/byQuery",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"organization",
+												"byQuery"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "withOnlyOrgName",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Medanta\",\r\n    \"_count\":1,\r\n    \"_pageNo\":0\r\n    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/organization/byQuery",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"organization",
+												"byQuery"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "withOnlyOrgAddress",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n \"address\": [\r\n        {\r\n            \r\n            \"city\": \"kanpur\"\r\n            \r\n        }\r\n    ],\r\n    \"_count\":10,\r\n    \"_pageNo\":0,\r\n    \"_sort\":\"lastUpdated\"\r\n    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/organization/byQuery",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"organization",
+												"byQuery"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "withOnlyOrgAlias",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n \"alias\": [\r\n        \"Tata chemical\"\r\n    ],\r\n    \"_count\":1,\r\n    \"_pageNo\":0\r\n    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/organization/byQuery",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"organization",
+												"byQuery"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "withOnlyOrgEndPoint",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"endpoint\": [\r\n        {\r\n            \"reference\": \"mock-reference\",\r\n            \"type\": \"www.some.com\",\r\n            \"id\": \"\",\r\n            \"display\": \"mock-display\"\r\n        }\r\n    ],\r\n    \"_count\":10,\r\n    \"_pageNo\":0,\r\n    \"_sort\":\"lastUpdated\"\r\n    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/organization/byQuery",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"organization",
+												"byQuery"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "withOnlyOrgId",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"id\":\"6217b5b184632c7743d0f2c0:1\"\r\n    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/organization/byQuery",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"organization",
+												"byQuery"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "withOnlyOrgPartOf",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n   \"partOf\": {\r\n        \"reference\": \"mock-reference\",\r\n        \"type\": \"mock-url\",\r\n        \"id\": \"MOCK-ID\",\r\n        \"display\": \"mock-display\"\r\n    },\r\n    \"_count\":10,\r\n    \"_pageNo\":0,\r\n    \"_sort\":\"lastUpdated\"\r\n    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/organization/byQuery",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"organization",
+												"byQuery"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "withAllOrgFields",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"active\": false,\r\n    \"type\": [\r\n        \"ins\",\r\n        \"team\",\r\n        \"govt\",\r\n        \"ins\",\r\n        \"pay\"\r\n    ],\r\n    \"name\": \"Medanta11\",\r\n    \"alias\": [\r\n        \"Tata chemical\"\r\n    ],\r\n    \"telecom\": [\r\n        {\r\n            \"system\": \"phone\",\r\n            \"value\": \"mock-value\",\r\n            \"use\": \"work\",\r\n            \"rank\": 0\r\n        },\r\n          {\r\n            \"system\": \"fax\",\r\n            \"value\": \"mock-value\",\r\n            \"use\": \"old\",\r\n            \"rank\": 0\r\n        }\r\n    ],\r\n    \"address\": [\r\n        {\r\n            \"use\": \"work\",\r\n            \"type\": \"postal\",\r\n            \"test\": \"mock-text\",\r\n            \"line\": \"mock-line\",\r\n            \"city\": \"kanpur\",\r\n            \"country\": \"India\",\r\n            \"postalcode\": \"208020\",\r\n            \"state\": \"up\"\r\n        },\r\n          {\r\n            \"use\": \"billing\",\r\n            \"type\": \"postal\",\r\n            \"test\": \"mock-text\",\r\n            \"line\": \"mock-line\",\r\n            \"city\": \"kanpur\",\r\n            \"country\": \"India\",\r\n            \"postalcode\": \"208020\",\r\n            \"state\": \"up\"\r\n        }\r\n    ],\r\n    \"partOf\": {\r\n        \"reference\": \"mock-reference\",\r\n        \"type\": \"mock-url\",\r\n        \"id\": \"MOCK-ID\",\r\n        \"display\": \"mock-display\"\r\n    },\r\n    \"contact\": [\r\n        {\r\n            \"purpose\": \"bill\",\r\n            \"name\": {\r\n                \"use\": \"USUAL\",\r\n                \"text\": \"mock-text\"\r\n            },\r\n            \"telecom\": [\r\n                {\r\n                    \"system\": \"phone\",\r\n                    \"value\": \"mock-value\",\r\n                    \"use\": \"home\",\r\n                    \"rank\": 0\r\n                }\r\n            ],\r\n            \"address\": {\r\n                \"use\": \"home\",\r\n                \"type\": \"postal\",\r\n                \"test\": \"mock-text\",\r\n                \"line\": \"mock-line\",\r\n                \"city\": \"kanpur\",\r\n                \"country\": \"India\"\r\n            }\r\n        },\r\n        {\r\n            \"purpose\": \"bill\",\r\n            \"name\": {\r\n                \"use\": \"USUAL\",\r\n                \"text\": \"mock-text\"\r\n            },\r\n            \"telecom\": [\r\n                {\r\n                    \"system\": \"phone\",\r\n                    \"value\": \"mock-value\",\r\n                    \"use\": \"home\",\r\n                    \"rank\": 0\r\n                }\r\n            ],\r\n            \"address\": {\r\n                \"use\": \"home\",\r\n                \"type\": \"postal\",\r\n                \"test\": \"mock-text\",\r\n                \"line\": \"mock-line\",\r\n                \"city\": \"kanpur\",\r\n                \"country\": \"India\"\r\n            }\r\n        }\r\n    ],\r\n    \"endpoint\": [\r\n        {\r\n            \"reference\": \"mock-reference\",\r\n            \"type\": \"www.some.com\",\r\n            \"id\": \"\",\r\n            \"display\": \"mock-display\"\r\n        }\r\n    ],\r\n    \"_count\":10,\r\n    \"_pageNo\":0\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/organization/byQuery",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"organization",
+												"byQuery"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "searchByTestFeature",
+							"item": [
+								{
+									"name": "searchByText",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"_contained\":\"healthk\",\r\n    \"_count\":2\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/organization/text",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"organization",
+												"text"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "MasterData",
+			"item": [
+				{
+					"name": "GetOrganizationTypes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/masterData/getOrgType",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"masterData",
+								"getOrgType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetContactSystem",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/masterData/getContactSystem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"masterData",
+								"getContactSystem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetContactUse",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/masterData/getContactUse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"masterData",
+								"getContactUse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAddressUse",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/masterData/getAddressUses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"masterData",
+								"getAddressUses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAddressType",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/masterData/getAddressType",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"masterData",
+								"getAddressType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetContactPurpose",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/masterData/getContactPurpose",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"masterData",
+								"getContactPurpose"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/masterData/getHumanNameUse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"masterData",
+								"getHumanNameUse"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "token",
+			"item": [
+				{
+					"name": "create-token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\" : \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/token/generate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"token",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "extract-token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"admin\",\r\n    \"jwt\" : \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY0NDI1MjA4MCwiaWF0IjoxNjQ0MjUxNzgwLCJqdGkiOiJhZG1pbiJ9.UNlSOtQx-6WDy6x7J9epVA34ViRTgWQtQFscnRScz28\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/token/extractClaims",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"token",
+								"extractClaims"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validate-token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"admin\",\r\n    \"jwt\" : \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY0NDI1MjA4MCwiaWF0IjoxNjQ0MjUxNzgwLCJqdGkiOiJhZG1pbiJ9.UNlSOtQx-6WDy6x7J9epVA34ViRTgWQtQFscnRScz28\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/token/validateToken",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"token",
+								"validateToken"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "location",
+			"item": [
+				{
+					"name": "create-location",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"resourceType\": \"Location\",\r\n    \"status\": \"active\",\r\n    \"mode\": \"instance\",\r\n    \"operationalStatus\": \"\",\r\n    \"name\": \"mock-name\",\r\n    \"alias\": [\r\n        \"mock-alias-1\",\r\n        \"mock-alias-2\"\r\n    ],\r\n    \"description\": \"mock-description\",\r\n    \"type\": [\r\n        \"mock-type-1\",\r\n        \"mock-type-2\"\r\n    ],\r\n    \"telecom\": [\r\n        {\r\n            \"system\": \"fax\",\r\n            \"value\": \"mock-value\",\r\n            \"use\": \"mobile\",\r\n            \"rank\": 1,\r\n            \"period\": {\r\n                \"startTime\": \"\",\r\n                \"endTime\": \"\"\r\n            }\r\n        },\r\n        {\r\n            \"system\": \"fax\",\r\n            \"value\": \"mock-value\",\r\n            \"use\": \"old\",\r\n            \"rank\": 0\r\n        }\r\n    ],\r\n    \"address\": {\r\n        \"use\": \"work\",\r\n        \"type\": \"postal\",\r\n        \"text\": \"mock-text\",\r\n        \"line\": \"mock-line\",\r\n        \"city\": \"lucknow\",\r\n        \"district\": \"kanpur nagar\",\r\n        \"country\": \"India\",\r\n        \"postalcode\": \"208020\",\r\n        \"state\": \"up\",\r\n        \"period\": {\r\n            \"startTime\": \"\",\r\n            \"endTime\": \"\"\r\n        }\r\n    },\r\n    \"physicalType\": \"mock-physical-type\",\r\n    \"position\": {\r\n        \"longitude\": 22.02,\r\n        \"latitude\": 23.03,\r\n        \"altitude\": 24.03\r\n    },\r\n    \"managingOrganization\": {\r\n        \"reference\": \"mock-reference\",\r\n        \"type\": \"www.some.com\",\r\n        \"id\": \"\",\r\n        \"display\": \"mock-display\"\r\n    },\r\n    \"partOf\": {\r\n        \"reference\": \"mock-reference\",\r\n        \"type\": \"mock-url\",\r\n        \"id\": \"MOCK-ID\",\r\n        \"display\": \"mock-display\"\r\n    },\r\n    \"hoursOfOperation\": [\r\n        {\r\n            \"daysOfWeek\": \"mon\",\r\n            \"allDay\": true,\r\n            \"openingTime\": null,\r\n            \"closingTime\": null\r\n        },\r\n        {\r\n            \"daysOfWeek\": \"tue\",\r\n            \"allDay\": true,\r\n            \"openingTime\": null,\r\n            \"closingTime\": null\r\n        }\r\n    ],\r\n    \"availabilityExceptions\": \"mock-availability-exceptions\",\r\n    \"endPoint\": [\r\n        {\r\n            \"reference\": \"mock-reference\",\r\n            \"type\": \"www.some.com\",\r\n            \"id\": \"\",\r\n            \"display\": \"mock-display\"\r\n        },\r\n        {\r\n            \"reference\": \"mock-reference-2\",\r\n            \"type\": \"www.some.com-2\",\r\n            \"id\": \"\",\r\n            \"display\": \"mock-display-2\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:8081/location/",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8081",
+							"path": [
+								"location",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
