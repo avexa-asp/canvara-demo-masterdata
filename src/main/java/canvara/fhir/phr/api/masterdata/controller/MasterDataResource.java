@@ -91,4 +91,19 @@ public class MasterDataResource {
         List<String> genders = Arrays.asList("level1", "level2", "level3", "level4");
         return ResponseEntity.ok(genders);
     }
+
+    @GetMapping(value = "/getMaritalStatus")
+    public ResponseEntity<List<String>> getMaritalStatus(){
+        List<String> maritalStatus = Arrays.asList("a", "d", "i", "l", "m", "c", "p", "t", "u", "s", "w", "unk");
+        return ResponseEntity.ok(maritalStatus);
+    }
+
+    @GetMapping(value = "/getLangCodes")
+    public ResponseEntity<List<String>> getLanguageCode(){
+        List<String> langCodes = Arrays.asList("ar","bn", "cs", "da", "de", "de-AT", "de-CH", "de-DE", "el", "en", "en-AU",
+                "en-CA", "en-GB", "en-IN", "en-NZ", "en-SG", "en-US", "es", "es-AR", "es-ES", "es-UY", "fi", "fr", "fr-BE",
+                "fe-CH", "fr-FR", "fy", "fy-NL", "hi", "hr", "it", "it-CH", "it-IT", "ja", "ko", "nl", "nl-BE", "nl-Nl", "no",
+                "no-NO");
+        return ResponseEntity.ok(langCodes);
+    }
 }
