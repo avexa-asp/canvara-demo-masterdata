@@ -79,4 +79,16 @@ public class MasterDataResource {
         return ResponseEntity.ok(days);
     }
 
+    //person api specific
+    @GetMapping(value = "/getGender")
+    public ResponseEntity<List<String>> getGender(){
+        List<String> genders = Arrays.asList("male", "female", "other", "unknown");
+        return ResponseEntity.ok(genders);
+    }
+
+    @GetMapping(value = "/getAssurance")
+    public ResponseEntity<List<String>> getAssurance(){
+        List<String> genders = Arrays.asList("level1", "level2", "level3", "level4");
+        return ResponseEntity.ok(genders);
+    }
 }
