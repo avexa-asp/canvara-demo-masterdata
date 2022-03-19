@@ -88,8 +88,8 @@ public class MasterDataResource {
 
     @GetMapping(value = "/getAssurance")
     public ResponseEntity<List<String>> getAssurance(){
-        List<String> genders = Arrays.asList("level1", "level2", "level3", "level4");
-        return ResponseEntity.ok(genders);
+        List<String> assurance = Arrays.asList("level1", "level2", "level3", "level4");
+        return ResponseEntity.ok(assurance);
     }
 
     @GetMapping(value = "/getMaritalStatus")
