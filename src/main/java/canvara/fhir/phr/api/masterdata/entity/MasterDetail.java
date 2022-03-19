@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @ToString
-public class MasterDetailRepository {
+public class MasterDetail {
     @Id
     private String id;
 
