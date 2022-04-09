@@ -28,18 +28,21 @@ public class MasterService {
     List<String> addressType = Arrays.asList("postal", "physical", "both");
     List<String> contactPurpose = Arrays.asList("bill", "admin", "hr", "payor", "patinf", "press");
     List<String> humanNameUse = Arrays.asList("usual", "official", "temp", "nickname", "anonymous", "old", "maiden");
-    List<String> endPointStatus = Arrays.asList("active", "suspended", "error", "off", "entered_in_error", "test");
+    List<String> endPointStatus = Arrays.asList("mock-status", "active", "suspended", "error", "off", "entered_in_error", "test");
     List<String> locStatus = Arrays.asList("active", "suspended", "inactive");
     List<String> locModes = Arrays.asList("instance", "kind");
     List<String> days = Arrays.asList("mon", "tue", "wed", "thu", "fri", "sat", "sun");
     List<String> genders = Arrays.asList("male", "female", "other", "unknown");
     List<String> assurance = Arrays.asList("level1", "level2", "level3", "level4");
     List<String> maritalStatus = Arrays.asList("a", "d", "i", "l", "m", "c", "p", "t", "u", "s", "w", "unk");
-    List<String> langCodes = Arrays.asList("ar", "bn", "cs", "da", "de", "de-AT", "de-CH", "de-DE", "el", "en", "en-AU",
-            "en-CA", "en-GB", "en-IN", "en-NZ", "en-SG", "en-US", "es", "es-AR", "es-ES", "es-UY", "fi", "fr", "fr-BE",
-            "fe-CH", "fr-FR", "fy", "fy-NL", "hi", "hr", "it", "it-CH", "it-IT", "ja", "ko", "nl", "nl-BE", "nl-Nl", "no",
-            "no-NO");
-
+    List<String> langCodes = Arrays.asList("ar", "bn", "cs", "da", "de", "de-AT");
+    //https://terminology.hl7.org/3.1.0/ValueSet-v2-0360.html
+    List<String> qualificationCodes = Arrays.asList("pn", "aas", "aa", "aba");
+    List<String> practitionerRoleCode = Arrays.asList("doctor", "nurse", "pharmacist", "researcher", "...remaining");
+    List<String> practitionerRoleSpecialty = Arrays.asList("408467006", "394577000", "...remaining");
+    List<String> endpointConnectionType = Arrays.asList("mock-connectionType");
+    List<String> endpointPayloadType = Arrays.asList("mock-payload-type");
+    List<String> endpointPayloadMimeType = Arrays.asList("mock-mime-type");
     public void insertMasterData() {
         MasterDetail masterDetail = new MasterDetail();
         try {
@@ -58,7 +61,16 @@ public class MasterService {
             masterDetail.setAssurance(assurance);
             masterDetail.setMaritalStatus(maritalStatus);
             masterDetail.setLangCodes(langCodes);
-            if (!(masterDataRepository.findAll().size() > 0)) masterDataRepository.save(masterDetail);
+            masterDetail.setQualificationCodes(qualificationCodes);
+            masterDetail.setPractitionerRoleCode(practitionerRoleCode);
+            masterDetail.setPractitionerRoleSpecialty(practitionerRoleSpecialty);
+            masterDetail.setEndPointConnectionType(endpointConnectionType);
+            masterDetail.setEndPointPayloadType(endpointPayloadType);
+            masterDetail.setEndPointPayloadMimeType(endpointPayloadMimeType);
+            if ((masterDataRepository.findAll().size() > 0)) {
+                masterDataRepository.deleteAll();
+            }
+            masterDataRepository.save(masterDetail);
         } catch (Exception exp) {
             logger.error("Create Operation Failed ", exp);
         }
@@ -97,6 +109,7 @@ public class MasterService {
             insertDataInMasterMap(MasterDataConstant.LOC_STATUS_KEY, masterDetail.getLocStatus());
             insertDataInMasterMap(MasterDataConstant.LOC_MODE_KEY, masterDetail.getLocMode());
             insertDataInMasterMap(MasterDataConstant.DAYS_KEY, masterDetail.getDays());
+            insertDataInMasterMap(MasterDataConstant.PAYLOAD_TYPE_KEY, masterDetail.getEndPointPayloadType());
         }, () -> isDataPresent.set(false));
 
         if (!isDataPresent.get()) throw new EmptyStackException();
