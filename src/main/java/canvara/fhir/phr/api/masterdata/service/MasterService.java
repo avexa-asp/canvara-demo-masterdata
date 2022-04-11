@@ -2,6 +2,7 @@ package canvara.fhir.phr.api.masterdata.service;
 
 import canvara.fhir.phr.api.masterdata.entity.MasterDetail;
 import canvara.fhir.phr.api.masterdata.repository.MasterDataRepository;
+import canvara.fhir.pojos.constant.MasterDataConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +14,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-import canvara.fhir.pojos.constant.MasterDataConstant;
-
 @Component
 public class MasterService {
     private static final Logger logger = LoggerFactory.getLogger(MasterService.class);
-    public HashMap<String, List<String>> masterDataMap = new HashMap<>();
+
+    private final HashMap<String, List<String>> masterDataMap = new HashMap<>();
+
     @Autowired
     private MasterDataRepository masterDataRepository;
+
     List<String> orgTypes = Arrays.asList("prov", "dept", "team", "govt", "ins", "pay", "edu", "reli", "crs", "cg", "bus", "other");
     List<String> contactSystems = Arrays.asList("phone", "fax", "email", "paper", "url", "sms", "other");
     List<String> contactUse = Arrays.asList("home", "work", "temp", "old", "mobile");
@@ -43,6 +45,7 @@ public class MasterService {
     List<String> endpointConnectionType = Arrays.asList("mock-connectionType");
     List<String> endpointPayloadType = Arrays.asList("mock-payload-type");
     List<String> endpointPayloadMimeType = Arrays.asList("mock-mime-type");
+
     public void insertMasterData() {
         MasterDetail masterDetail = new MasterDetail();
         try {

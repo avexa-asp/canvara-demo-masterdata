@@ -10,3 +10,8 @@ Purpose of this Project:
                 "prov", "dept", "team", "govt", "ins", "pay", "edu", "reli", "crs", "cg", "bus", "other"
             so this data is inserted in **canvara_master_data** collection and those services which is using Organization 
             type will get this data and validate the coming data with this data.
+
+    
+    State of this project:
+        Currently the master data is hard coded in MasterService file but letter on master data will come from application.properties
+        file.
