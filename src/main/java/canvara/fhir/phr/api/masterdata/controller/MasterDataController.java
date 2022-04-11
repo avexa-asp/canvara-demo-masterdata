@@ -21,7 +21,6 @@ public class MasterDataController {
 
     @GetMapping(value = "/getOrgType")
     public ResponseEntity<List<String>> getOrganizationType() {
-//        List<String> orgTypes = Arrays.asList("prov", "dept", "team", "govt", "ins", "pay", "edu", "reli", "crs", "cg", "bus", "other");
         List<String> orgTypes = masterService.getMasterData(MasterDataConstant.ORG_TYPE_KEY);
         return ResponseEntity.ok(orgTypes);
     }
