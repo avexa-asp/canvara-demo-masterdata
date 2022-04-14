@@ -20,7 +20,8 @@ import static canvara.fhir.phr.api.masterdata.values.MasterDataValues.*;
 public class MasterService {
     private static final Logger logger = LoggerFactory.getLogger(MasterService.class);
 
-    @Autowired private MasterDataRepository masterDataRepository;
+    @Autowired
+    private MasterDataRepository masterDataRepository;
 
     private final HashMap<String, List<String>> masterDataMap = new HashMap<>();
 
