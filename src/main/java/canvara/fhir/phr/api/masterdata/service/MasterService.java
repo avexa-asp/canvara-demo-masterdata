@@ -19,36 +19,6 @@ import static canvara.fhir.phr.api.masterdata.values.MasterDataValues.*;
 @Component
 public class MasterService {
     private static final Logger logger = LoggerFactory.getLogger(MasterService.class);
-<<<<<<< HEAD
-    public HashMap<String, List<String>> masterDataMap = new HashMap<>();
-    @Autowired
-    private MasterDataRepository masterDataRepository;
-
-    List<String> orgTypes = Arrays.asList("prov", "dept", "team", "govt", "ins", "pay", "edu", "reli", "crs", "cg", "bus", "other");
-    List<String> contactSystems = Arrays.asList("phone", "fax", "email", "paper", "url", "sms", "other");
-    List<String> contactUse = Arrays.asList("home", "work", "temp", "old", "mobile");
-    List<String> addressUse = Arrays.asList("home", "work", "temp", "old", "billing");
-    List<String> addressType = Arrays.asList("postal", "physical", "both");
-    List<String> contactPurpose = Arrays.asList("bill", "admin", "hr", "payor", "patinf", "press");
-    List<String> humanNameUse = Arrays.asList("usual", "official", "temp", "nickname", "anonymous", "old", "maiden");
-    List<String> endPointStatus = Arrays.asList("mock-status", "active", "suspended", "error", "off", "entered_in_error", "test");
-    List<String> locStatus = Arrays.asList("active", "suspended", "inactive");
-    List<String> locModes = Arrays.asList("instance", "kind");
-    List<String> days = Arrays.asList("mon", "tue", "wed", "thu", "fri", "sat", "sun");
-    List<String> genders = Arrays.asList("male", "female", "other", "unknown");
-    List<String> assurance = Arrays.asList("level1", "level2", "level3", "level4");
-    List<String> maritalStatus = Arrays.asList("a", "d", "i", "l", "m", "c", "p", "t", "u", "s", "w", "unk");
-    List<String> langCodes = Arrays.asList("ar", "bn", "cs", "da", "de", "de-AT");
-    //https://terminology.hl7.org/3.1.0/ValueSet-v2-0360.html
-    List<String> qualificationCodes = Arrays.asList("pn", "aas", "aa", "aba");
-    List<String> practitionerRoleCode = Arrays.asList("doctor", "nurse", "pharmacist", "researcher", "...remaining");
-    List<String> practitionerRoleSpecialty = Arrays.asList("408467006", "394577000", "...remaining");
-    List<String> endpointConnectionType = Arrays.asList("mock-connectionType");
-    List<String> endpointPayloadType = Arrays.asList("mock-payload-type");
-    List<String> endpointPayloadMimeType = Arrays.asList("mock-mime-type");
-    
-    public void insertMasterData() {
-=======
 
     @Autowired private MasterDataRepository masterDataRepository;
 
@@ -63,7 +33,6 @@ public class MasterService {
     }
 
     public void insertMasterData() throws MasterDataException {
->>>>>>> main
         MasterDetail masterDetail = new MasterDetail();
         try {
             masterDetail.setOrgType(organizationTypes);
