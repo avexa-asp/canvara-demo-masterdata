@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
@@ -37,7 +35,7 @@ public class MasterService {
     public void insertMasterData() throws MasterDataException {
         MasterDetail masterDetail = new MasterDetail();
         try {
-            masterDetail.setOrgType(orgTypes);
+            masterDetail.setOrgType(organizationTypes);
             masterDetail.setContactSystem(contactSystems);
             masterDetail.setContactUse(contactUse);
             masterDetail.setAddressUse(addressUse);
@@ -45,13 +43,13 @@ public class MasterService {
             masterDetail.setContactPurpose(contactPurpose);
             masterDetail.setHumanNameUse(humanNameUse);
             masterDetail.setEndPointStatus(endPointStatus);
-            masterDetail.setLocStatus(locStatus);
-            masterDetail.setLocMode(locModes);
+            masterDetail.setLocStatus(locationStatus);
+            masterDetail.setLocMode(locationModes);
             masterDetail.setDays(days);
             masterDetail.setGender(genders);
             masterDetail.setAssurance(assurance);
             masterDetail.setMaritalStatus(maritalStatus);
-            masterDetail.setLangCodes(langCodes);
+            masterDetail.setLangCodes(languageCodes);
             masterDetail.setQualificationCodes(qualificationCodes);
             masterDetail.setPractitionerRoleCode(practitionerRoleCode);
             masterDetail.setPractitionerRoleSpecialty(practitionerRoleSpecialty);
