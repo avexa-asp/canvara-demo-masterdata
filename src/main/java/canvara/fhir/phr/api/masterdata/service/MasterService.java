@@ -1,23 +1,25 @@
 package canvara.fhir.phr.api.masterdata.service;
 
 import canvara.fhir.phr.api.masterdata.entity.MasterDetail;
+import canvara.fhir.phr.api.masterdata.exception.MasterDataException;
 import canvara.fhir.phr.api.masterdata.repository.MasterDataRepository;
+import canvara.fhir.pojos.constant.MasterDataConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-import canvara.fhir.pojos.constant.MasterDataConstant;
+import static canvara.fhir.phr.api.masterdata.constant.MasterDataConstant.*;
+import static canvara.fhir.phr.api.masterdata.values.MasterDataValues.*;
 
 @Component
 public class MasterService {
     private static final Logger logger = LoggerFactory.getLogger(MasterService.class);
+<<<<<<< HEAD
     public HashMap<String, List<String>> masterDataMap = new HashMap<>();
     @Autowired
     private MasterDataRepository masterDataRepository;
@@ -46,37 +48,11 @@ public class MasterService {
     List<String> endpointPayloadMimeType = Arrays.asList("mock-mime-type");
     
     public void insertMasterData() {
-        MasterDetail masterDetail = new MasterDetail();
-        try {
-            masterDetail.setOrgType(orgTypes);
-            masterDetail.setContactSystem(contactSystems);
-            masterDetail.setContactUse(contactUse);
-            masterDetail.setAddressUse(addressUse);
-            masterDetail.setAddressType(addressType);
-            masterDetail.setContactPurpose(contactPurpose);
-            masterDetail.setHumanNameUse(humanNameUse);
-            masterDetail.setEndPointStatus(endPointStatus);
-            masterDetail.setLocStatus(locStatus);
-            masterDetail.setLocMode(locModes);
-            masterDetail.setDays(days);
-            masterDetail.setGender(genders);
-            masterDetail.setAssurance(assurance);
-            masterDetail.setMaritalStatus(maritalStatus);
-            masterDetail.setLangCodes(langCodes);
-            masterDetail.setQualificationCodes(qualificationCodes);
-            masterDetail.setPractitionerRoleCode(practitionerRoleCode);
-            masterDetail.setPractitionerRoleSpecialty(practitionerRoleSpecialty);
-            masterDetail.setEndPointConnectionType(endpointConnectionType);
-            masterDetail.setEndPointPayloadType(endpointPayloadType);
-            masterDetail.setEndPointPayloadMimeType(endpointPayloadMimeType);
-            if ((masterDataRepository.findAll().size() > 0)) {
-                masterDataRepository.deleteAll();
-            }
-            masterDataRepository.save(masterDetail);
-        } catch (Exception exp) {
-            logger.error("Create Operation Failed ", exp);
-        }
-    }
+=======
+
+    @Autowired private MasterDataRepository masterDataRepository;
+
+    private final HashMap<String, List<String>> masterDataMap = new HashMap<>();
 
     public void insertDataInMasterMap(String key, List<String> value) {
         masterDataMap.put(key, value);
@@ -86,6 +62,41 @@ public class MasterService {
         return masterDataMap.get(key);
     }
 
+    public void insertMasterData() throws MasterDataException {
+>>>>>>> main
+        MasterDetail masterDetail = new MasterDetail();
+        try {
+            masterDetail.setOrgType(organizationTypes);
+            masterDetail.setContactSystem(contactSystems);
+            masterDetail.setContactUse(contactUse);
+            masterDetail.setAddressUse(addressUse);
+            masterDetail.setAddressType(addressType);
+            masterDetail.setContactPurpose(contactPurpose);
+            masterDetail.setHumanNameUse(humanNameUse);
+            masterDetail.setEndPointStatus(endPointStatus);
+            masterDetail.setLocStatus(locationStatus);
+            masterDetail.setLocMode(locationModes);
+            masterDetail.setDays(days);
+            masterDetail.setGender(genders);
+            masterDetail.setAssurance(assurance);
+            masterDetail.setMaritalStatus(maritalStatus);
+            masterDetail.setLangCodes(languageCodes);
+            masterDetail.setQualificationCodes(qualificationCodes);
+            masterDetail.setPractitionerRoleCode(practitionerRoleCode);
+            masterDetail.setPractitionerRoleSpecialty(practitionerRoleSpecialty);
+            masterDetail.setEndPointConnectionType(endpointConnectionType);
+            masterDetail.setEndPointPayloadType(endpointPayloadType);
+            masterDetail.setEndPointPayloadMimeType(endpointPayloadMimeType);
+
+            if ((masterDataRepository.findAll().size() > 0)) {
+                masterDataRepository.deleteAll();
+            }
+            masterDataRepository.save(masterDetail);
+        } catch (Exception exp) {
+            throw new MasterDataException(MASTER_DATA_LOAD_FAIL);
+        }
+    }
+
     /**
      * key is master field name
      *
@@ -93,7 +104,7 @@ public class MasterService {
      * @return
      */
     public void loadMasterData(String key) throws Exception {
-        logger.info("Master Data Loading...");
+        logger.info(MASTER_DATA_LOADING);
         AtomicReference<Boolean> isDataPresent = new AtomicReference<>(true);
         masterDataRepository.findAll().stream().findFirst().ifPresentOrElse(masterDetail -> {
             insertDataInMasterMap(MasterDataConstant.GENDER_KEY, masterDetail.getGender());
@@ -114,8 +125,8 @@ public class MasterService {
             insertDataInMasterMap(MasterDataConstant.PAYLOAD_TYPE_KEY, masterDetail.getEndPointPayloadType());
         }, () -> isDataPresent.set(false));
 
-        if (!isDataPresent.get()) throw new EmptyStackException();
-        logger.info("Master Data Loaded Successfully");
+        if (!isDataPresent.get()) throw new MasterDataException(MASTER_DATA_IS_NULL);
+        logger.info(MASTER_DATA_LOAD_SUCCESSFULLY);
 
     }
 }

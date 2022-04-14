@@ -5,11 +5,11 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.3</version>
+        <version>2.6.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>canvara.fhir</groupId>
-    <artifactId>canvara.fhir.phr.api.masterdata</artifactId>
+    <artifactId>canvara.fhir.masterdata.api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>canvara-masterdata</name>
     <description>canvara development support</description>
@@ -34,10 +34,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
         <!--external jar-->
         <dependency>
             <groupId>canvara.fhir</groupId>
@@ -45,6 +47,7 @@
             <version>1.0</version>
         </dependency>
 
+        <!--external jar-->
         <dependency>
             <groupId>canvara.fhir</groupId>
             <artifactId>canvara.fhir.pojos</artifactId>
