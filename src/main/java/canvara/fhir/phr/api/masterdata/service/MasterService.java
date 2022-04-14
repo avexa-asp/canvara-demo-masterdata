@@ -1,6 +1,7 @@
 package canvara.fhir.phr.api.masterdata.service;
 
 import canvara.fhir.phr.api.masterdata.entity.MasterDetail;
+import canvara.fhir.phr.api.masterdata.exception.MasterDataException;
 import canvara.fhir.phr.api.masterdata.repository.MasterDataRepository;
 import canvara.fhir.pojos.constant.MasterDataConstant;
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
+import static canvara.fhir.phr.api.masterdata.constant.MasterDataConstant.*;
 import static canvara.fhir.phr.api.masterdata.values.MasterDataValues.*;
 
 @Component
@@ -32,7 +34,7 @@ public class MasterService {
         return masterDataMap.get(key);
     }
 
-    public void insertMasterData() {
+    public void insertMasterData() throws MasterDataException {
         MasterDetail masterDetail = new MasterDetail();
         try {
             masterDetail.setOrgType(orgTypes);
@@ -62,7 +64,7 @@ public class MasterService {
             }
             masterDataRepository.save(masterDetail);
         } catch (Exception exp) {
-            logger.error("Create Operation Failed ", exp);
+            throw new MasterDataException(MASTER_DATA_LOAD_FAIL);
         }
     }
 
@@ -73,7 +75,7 @@ public class MasterService {
      * @return
      */
     public void loadMasterData(String key) throws Exception {
-        logger.info("Master Data Loading...");
+        logger.info(MASTER_DATA_LOADING);
         AtomicReference<Boolean> isDataPresent = new AtomicReference<>(true);
         masterDataRepository.findAll().stream().findFirst().ifPresentOrElse(masterDetail -> {
             insertDataInMasterMap(MasterDataConstant.GENDER_KEY, masterDetail.getGender());
@@ -94,8 +96,8 @@ public class MasterService {
             insertDataInMasterMap(MasterDataConstant.PAYLOAD_TYPE_KEY, masterDetail.getEndPointPayloadType());
         }, () -> isDataPresent.set(false));
 
-        if (!isDataPresent.get()) throw new EmptyStackException();
-        logger.info("Master Data Loaded Successfully");
+        if (!isDataPresent.get()) throw new MasterDataException(MASTER_DATA_IS_NULL);
+        logger.info(MASTER_DATA_LOAD_SUCCESSFULLY);
 
     }
 }

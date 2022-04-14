@@ -1,5 +1,6 @@
 package canvara.fhir.phr.api.masterdata;
 
+import canvara.fhir.phr.api.masterdata.exception.MasterDataException;
 import canvara.fhir.phr.api.masterdata.service.MasterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -17,7 +18,7 @@ public class CanvaraMasterdataApplication {
     }
 
     @PostConstruct
-    public void insertMasterData() {
+    public void insertMasterData() throws MasterDataException {
         masterService.insertMasterData();
     }
 
