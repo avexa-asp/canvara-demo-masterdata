@@ -48,4 +48,17 @@ public class MasterDataValues {
             .asList("mock-payload-type");
     public static final List<String> endpointPayloadMimeType = Arrays
             .asList("mock-mime-type");
+    public static final List<String> serviceCategory = Arrays
+            .asList("mock_service_category");
+    public static final List<String> serviceType = Arrays
+            .asList("mock_service_type");
+    public static final List<String> serviceSpeciality = Arrays
+            .asList("mock_service_speciality");
+    public static final List<String> serviceProvisionCode = Arrays
+            .asList("mock_service_provision_code");
+    public static final List<String> program = Arrays
+            .asList("mock_program");
+    public static final List<String> referralMethod = Arrays
+            .asList("mock_referral_method");
+
 }

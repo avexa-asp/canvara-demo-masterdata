@@ -57,6 +57,12 @@ public class MasterService {
             masterDetail.setEndPointConnectionType(endpointConnectionType);
             masterDetail.setEndPointPayloadType(endpointPayloadType);
             masterDetail.setEndPointPayloadMimeType(endpointPayloadMimeType);
+            masterDetail.setServiceCategory(serviceCategory);
+            masterDetail.setServiceType(serviceType);
+            masterDetail.setServiceSpeciality(serviceSpeciality);
+            masterDetail.setServiceProvisionCode(serviceProvisionCode);
+            masterDetail.setProgram(program);
+            masterDetail.setReferralMethod(referralMethod);
 
             if ((masterDataRepository.findAll().size() > 0)) {
                 masterDataRepository.deleteAll();
