@@ -40,6 +40,13 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
+        <!--Jasypt-->
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+
         <!--external jar-->
         <dependency>
             <groupId>canvara.fhir</groupId>
@@ -60,6 +67,12 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-maven-plugin</artifactId>
+                <version>3.0.3</version>
             </plugin>
         </plugins>
         <finalName>master-data-1</finalName>
