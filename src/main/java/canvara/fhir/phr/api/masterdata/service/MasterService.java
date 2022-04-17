@@ -63,7 +63,8 @@ public class MasterService {
             masterDetail.setServiceProvisionCode(serviceProvisionCode);
             masterDetail.setProgram(program);
             masterDetail.setReferralMethod(referralMethod);
-
+            masterDetail.setAccountStatus(accountStatus);
+            masterDetail.setAccountType(accountType);
             if ((masterDataRepository.findAll().size() > 0)) {
                 masterDataRepository.deleteAll();
             }

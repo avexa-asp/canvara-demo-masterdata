@@ -60,5 +60,9 @@ public class MasterDataValues {
             .asList("mock_program");
     public static final List<String> referralMethod = Arrays
             .asList("mock_referral_method");
+    public static final List<String> accountStatus = Arrays
+            .asList("mock_account_status");
+    public static final List<String> accountType = Arrays
+            .asList("mock_account_type");
 
 }
