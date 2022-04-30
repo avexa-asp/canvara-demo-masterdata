@@ -65,6 +65,8 @@ public class MasterService {
             masterDetail.setReferralMethod(referralMethod);
             masterDetail.setAccountStatus(accountStatus);
             masterDetail.setAccountType(accountType);
+            masterDetail.setPatientRelation(patientRelation);
+            masterDetail.setPatientLinkType(patientLinkType);
             if ((masterDataRepository.findAll().size() > 0)) {
                 masterDataRepository.deleteAll();
             }
