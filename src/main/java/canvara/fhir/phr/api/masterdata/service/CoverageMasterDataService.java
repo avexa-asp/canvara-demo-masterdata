@@ -3,12 +3,10 @@ package canvara.fhir.phr.api.masterdata.service;
 import canvara.fhir.phr.api.masterdata.entity.CoverageMasterDetail;
 import canvara.fhir.phr.api.masterdata.exception.MasterDataException;
 import canvara.fhir.phr.api.masterdata.repository.CoverageMasterDataRepository;
-import canvara.fhir.phr.api.masterdata.repository.MasterDataRepository;
-import canvara.fhir.pojos.constant.MasterDataConstant;
-import canvara.fhir.pojos.dto.master.data.CoverageMasterDataDetail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +15,9 @@ import java.util.concurrent.atomic.AtomicReference;
 import static canvara.fhir.phr.api.masterdata.constant.MasterDataConstant.*;
 import static canvara.fhir.phr.api.masterdata.constant.MasterDataConstant.MASTER_DATA_LOAD_SUCCESSFULLY;
 import static canvara.fhir.phr.api.masterdata.values.CoverageMasterDataValues.*;
+import static canvara.fhir.pojos.constant.MasterDataConstant.*;
 
+@Service
 public class CoverageMasterDataService {
     private static final Logger logger = LoggerFactory.getLogger(CoverageMasterDataService.class);
 
@@ -56,18 +56,24 @@ public class CoverageMasterDataService {
         }
     }
 
-    public void getCoverageMasterData() throws MasterDataException {
+    public HashMap<String, List<String>> getCoverageMasterData() throws MasterDataException {
         logger.info(RESOURCE_COVERAGE+" "+MASTER_DATA_LOADING);
         AtomicReference<Boolean> isDataPresent = new AtomicReference<>(true);
+
         coverageMasterDataRepository.findAll().stream().findFirst().ifPresentOrElse(data -> {
-            insertDataInCoverageContainer(MasterDataConstant.COVERAGE_STATUS_KEY, data.getCoverageStatus());
-            insertDataInCoverageContainer(MasterDataConstant.COVERAGE_TYPE_KEY, data.getCoverageType());
-
-
+            insertDataInCoverageContainer(COVERAGE_STATUS_KEY, data.getCoverageStatus());
+            insertDataInCoverageContainer(COVERAGE_TYPE_KEY, data.getCoverageType());
+            insertDataInCoverageContainer(COVERAGE_RELATIONSHIP_KEY, data.getCoverageRelationship());
+            insertDataInCoverageContainer(COVERAGE_CLASS_TYPE_KEY, data.getCoverageClassType());
+            insertDataInCoverageContainer(COVERAGE_BENEFICIARY_TYPE_KEY, data.getCoverageBeneficiaryType());
+            insertDataInCoverageContainer(COVERAGE_BENEFICIARY_QUANTITY_CODE_KEY, data.getCoverageBeneficiaryQuantityCode());
+            insertDataInCoverageContainer(COVERAGE_BENEFICIARY_MONEY_CURRENCY_KEY, data.getCoverageBeneficiaryMoneyCurrency());
+            insertDataInCoverageContainer(COVERAGE_EXCEPTION_TYPE_KEY, data.getExceptionType());
         }, () -> isDataPresent.set(false));
 
         if (!isDataPresent.get()) throw new MasterDataException(RESOURCE_COVERAGE+" "+MASTER_DATA_IS_NULL);
         logger.info(RESOURCE_COVERAGE+" "+MASTER_DATA_LOAD_SUCCESSFULLY);
+        return coverageMasterDataContainer;
     }
 
 }
